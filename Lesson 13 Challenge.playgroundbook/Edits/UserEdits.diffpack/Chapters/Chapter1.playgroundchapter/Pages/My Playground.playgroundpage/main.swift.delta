@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Diff</key>
+	<array>
+		<dict>
+			<key>ModifiedContent</key>
+			<string>//
+// Main.swift
+// Lesson 13 Challenge
+//
+// Created by Marcus A. Mosley on 2021-01-22
+// Copyright (C) 2021 Marcus A. Mosley. All rights reserved.
+//
+
+import SwiftUI
+import UIKit
+import PlaygroundSupport
+
+let item1: UIImage = #imageLiteral(resourceName: "item1.png")
+let item2: UIImage = #imageLiteral(resourceName: "item2.png")
+let item3: UIImage = #imageLiteral(resourceName: "item3.png")
+
+struct ContentView: View {
+    
+    @State private var leftSlot = "item1"
+    @State private var centerSlot = "item1"
+    @State private var rightSlot = "item1"
+    @State private var credits = 1000
+    
+    var body: some View {
+        VStack() {
+            Spacer()
+            Text("SwiftUI Slots!")
+                .font(.largeTitle)
+            Spacer()
+            Text("Credits: \(String(credits))")
+            Spacer()
+            HStack() {
+                Spacer()
+                Image(uiImage: UIImage(imageLiteralResourceName: leftSlot))
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                Spacer()
+                Image(uiImage: UIImage(imageLiteralResourceName: centerSlot))
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                Spacer()
+                Image(uiImage: UIImage(imageLiteralResourceName: rightSlot))
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                Spacer()
+            }
+            Spacer()
+            Button("Spin", action: {
+                leftSlot = "item" + String(Int.random(in: 1...3))
+                centerSlot = "item" + String(Int.random(in: 1...3))
+                rightSlot = "item" + String(Int.random(in: 1...3))
+                
+                if leftSlot == centerSlot &amp;&amp; leftSlot == rightSlot {
+                    credits += 15
+                } else {
+                    credits -= 5
+                }
+            })
+            .padding()
+            .padding([.leading, .trailing], 40)
+            .foregroundColor(.white)
+            .background(Color(.systemPink))
+            .cornerRadius(25)
+            .font(.system(size: 18, weight: .bold, design: .default))
+            Spacer()
+        }
+    }
+}
+
+PlaygroundPage.current.setLiveView(ContentView())
+</string>
+			<key>ModifiedRange</key>
+			<string>{0, 2259}</string>
+			<key>OriginalContent</key>
+			<string>
+</string>
+			<key>OriginalRange</key>
+			<string>{0, 1}</string>
+		</dict>
+	</array>
+	<key>File</key>
+	<string>Chapters/Chapter1.playgroundchapter/Pages/My Playground.playgroundpage/main.swift</string>
+</dict>
+</plist>
